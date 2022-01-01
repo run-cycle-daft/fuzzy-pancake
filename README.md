@@ -20,3 +20,8 @@ Inline Geofence Policy
     ]
 }
 ```
+
+Add AWS SDK location service client
+```bash
+yarn add @aws-sdk/client-location
+```
