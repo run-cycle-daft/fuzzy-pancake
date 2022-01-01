@@ -1,196 +1,34 @@
-// import { useState, useEffect, useCallback, Fragment } from 'react'
-import { Auth, API } from 'aws-amplify'
+import { useState, useEffect } from 'react'
+import { Auth } from 'aws-amplify'
 import { Signer, ICredentials } from '@aws-amplify/core'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import ReactMapGL, {
   NavigationControl,
   Marker,
   ViewportProps,
-} from 'react-ma
-  // Source,
-  // Layer,
-  // LayerProps,p-gl'
+} from 'react-map-gl'
+import { StarIcon } from '@heroicons/react/solid'
 import { Popover } from '@headlessui/react'
-// import { StarIcon, UserIcon, XIcon } from '@heroicons/react/solid'
+
 import config from '../aws-exports'
-// import { Popover, Transition } from '@headlessui/react'
+
 const mapName = 'GraphQlRealTimeRacing'
-// import { useList, useInterval } from 'react-use'
 
-// import {
-//   LocationClient,
-//   BatchEvaluateGeofencesCommand,
-// } from '@aws-sdk/client-location'
-// import monzaGeo from '../data/monza.geo.json'
-// import attractions from '../data/attractions.geo.json'
-  const [credentials, setCredential
+const mainLocation = {
+  latitude: 45.621886,
+  longitude: 9.284934,
+}
+function Map() {
+  const [credentials, setCredentials] = useState<ICredentials | null>(null)
 
-// import * as subscriptions from '../graphql/subscriptions'
-// import { OnCreateLocationEventSubscription } from '../API'
-// import Observable from 'zen-observable's] = useState<ICredentials | null>(null)
+  const [viewport, setViewport] = useState<Partial<ViewportProps>>({
+    ...mainLocation,
+    zoom: 13,
+  })
 
-
-// const CollectionName = 'MonzaCircuit'
-// const data = monzaGeo as GeoJSON.FeatureCollection<GeoJSON.Geometry>
-// const attData = attractions as GeoJSON.FeatureCollection<GeoJSON.Geometry>
-
-// const dataLayer: LayerProps = {
-//   id: 'data',
-//   type: 'fill',
-//   paint: {
-//     'fill-color': 'red',
-//     'fill-opacity': 0.1,
-//   },
-// }
-
-// const attDataLayer: LayerProps = {
-//   id: 'att-data',
-//   type: 'fill',
-//   paint: {
-//     'fill-color': 'blue',
-//     'fill-opacity': 0.3,
-//   },
-// }
-          DevicePositionUpdates: [
-            {
-              DeviceId: info.username,
-              Position: [marker.longitude, marker.latitude],
-              SampleTime: new Date(),
-// interface SubscriptionValue<T> {
-//   value: { data: T }
-// }
-// type LocEvent = OnCreateLocationEventSubscription
-
-// type TMT = {
-//   event: LocEvent
-//   index: number
-//   removeAt: Function
-//   evict?: boolean
-// }
-
-// const ToastMessage = ({ event, index, removeAt, evict }: TMT) => {
-//   const device = event.onCreateLocationEvent?.deviceId!
-//   const date = new Date(
-//     event.onCreateLocationEvent?.sampleTime!
-//   ).toLocaleTimeString()
-//   const verb = event.onCreateLocationEvent?.type === 'EXIT' ? 'left' : 'entered'
-//   const loc = event.onCreateLocationEvent?.geofenceId
-//   return (
-//     <div>
-//       <span>{`${date} - ${device}`}</span>
-//       <span
-//         className={`${verb === 'left' ? 'text-red-500' : 'text-green-500'}`}
-//       >
-//         {' '}
-//         {verb}{' '}
-//       </span>
-//       <span>{loc}</span>
-//     </div>
-//   )
-// }
-
-// function Toast() {
-//   const [list, { push, sort, filter, removeAt, clear }] = useList<{
-//     event: LocEvent
-//     date: Date
-//   }>([])
-
-//   useInterval(
-//     () => {
-//       const now = new Date()
-//       filter(({ event, date }) => {
-//         const old = new Date(date)
-//         old.setSeconds(old.getSeconds() + 30)
-//         return old > now
-//       })
-//     },
-//     list.length ? 500 : null
-//   )
-//   useEffect(() => {
-//     const subscription = (
-//       API.graphql({
-//         query: subscriptions.onCreateLocationEvent,
-//       }) as unknown as Observable<SubscriptionValue<LocEvent>>
-//     ).subscribe({
-//       next: (resp) => {
-//         const event = resp.value.data
-//         console.log(event)
-//         push({ event, date: new Date() })
-//         sort((a, b) => {
-//           if (
-//             a.event.onCreateLocationEvent?.sampleTime! <
-//             b.event.onCreateLocationEvent?.sampleTime!
-//           ) {
-//             return 1
-//           }
-//           return -1
-//         })
-//         filter((v, index) => (index ?? 5) < 5)
-//       },
-//     })
-
-//     return () => {
-//       subscription.unsubscribe()
-//     }
-//   }, [push, filter, sort])
-
-//   return (
-//     <>
-//       {/* Global notification live region, render this permanently at the end of the document */}
-//       <div aria-live="assertive" className="fixed inset-0 pointer-events-none ">
-//         <div className="flex items-end h-full max-w-screen-sm px-4 py-6 mx-auto sm:pt-20 sm:p-6 sm:items-start">
-//           <div className="flex flex-col items-center w-full space-y-4 sm:items-end">
-//             <Transition
-//               show={list.length > 0}
-//               as={Fragment}
-//               enter="transform ease-out duration-300 transition"
-//               enterFrom="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
-//               enterTo="translate-y-0 opacity-100 sm:translate-x-0"
-//               leave="transition ease-in duration-500"
-//               leaveFrom="opacity-100"
-//               leaveTo="opacity-0"
-//             >
-//               <div className="relative w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg pointer-events-auto ring-1 ring-black ring-opacity-5">
-//                 <div className="absolute top-0 right-0 mt-2 mr-2">
-//                   <button
-//                     className="inline-flex text-gray-400 bg-white rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-//                     onClick={() => clear()}
-//                   >
-//                     <span className="sr-only">Close</span>
-//                     <XIcon className="w-5 h-5" aria-hidden="true" />
-//                   </button>
-//                 </div>
-
-//                 <div className="p-4">
-//                   <div className="flex items-center">
-//                     <div className="flex justify-between flex-1 w-0">
-//                       <div className="flex flex-col flex-1 w-0 space-y-2 text-xs font-medium text-gray-900">
-//                         {list.map(({ event }, index) => (
-//                           <ToastMessage
-//                             key={event.onCreateLocationEvent?.id}
-//                             {...{ event, removeAt, index }}
-//                           />
-//                         ))}
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             </Transition>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   )
-// }            },
-          ],
-        })
-      )
-  const [info, setInfo] = useState<any>(null)      console.log(`send result >`, JSON.stringify(result, null, 2))
-
-    }
-    fn()
-  }, [credentials, marker, info])
+  useEffect(() => {
+    Auth.currentUserCredentials().then((creds) => setCredentials(creds))
+  }, [])
 
   const transformRequest =
     (credentials: ICredentials) => (url?: string, resourceType?: string) => {
@@ -249,14 +87,7 @@ const mapName = 'GraphQlRealTimeRacing'
                           />
                         </Popover.Button>
 
-
-  const onMarkerDragEnd = useCallback((event) => {
-    setMarker({
-      longitude: event.lngLat[0],
-      latitude: event.lngLat[1],
-    })
-  }, [])    
-                    <Popover.Panel className="w-48 p-2 text-xs bg-white rounded shadow-lg">
+                        <Popover.Panel className="w-48 p-2 text-xs bg-white rounded shadow-lg">
                           <div>
                             <h3 className="font-bold tracking-wide uppercase">
                               Autodromo Nazionale Monza
@@ -269,7 +100,6 @@ const mapName = 'GraphQlRealTimeRacing'
                         </Popover.Panel>
                       </Popover>
                     </Marker>
-                    
                   </ReactMapGL>
                 ) : (
                   <h1>Loading...</h1>
