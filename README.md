@@ -1,6 +1,6 @@
 # GraphQlRealTimeRacing 
 
-Lab3 in progress
+## Lab3 notes
 
 Create your own GeoFence for upload to AWS Location Service - https://geojson.io/
 
@@ -77,3 +77,6 @@ yarn add -D @types/zen-observable
 ```
 
 Finally add futher updates to the src/pages/Map.tsx
+
+## Lab4 notes
+
