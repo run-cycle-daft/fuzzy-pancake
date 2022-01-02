@@ -37,6 +37,10 @@
         "graphqlrealtimeracesharpLib": {
           "deploymentBucketName": "amplify-graphqlrealtimerace-staging-211824-deployment",
           "s3Key": "amplify-builds/graphqlrealtimeracesharpLib-LambdaLayerVersion44423d98-build.zip"
+        },
+        "pinpointInterface": {
+          "deploymentBucketName": "amplify-graphqlrealtimerace-staging-211824-deployment",
+          "s3Key": "amplify-builds/pinpointInterface-766c4f66692b782b5a73-build.zip"
         }
       }
     }

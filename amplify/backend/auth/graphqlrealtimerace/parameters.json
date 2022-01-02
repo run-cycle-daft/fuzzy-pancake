@@ -1,6 +1,6 @@
 {
     "identityPoolName": "testAuthIdentityPool",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "graphqaf35f13c",
     "userPoolName": "graphqlrealtimerace",
     "autoVerifiedAttributes": [
