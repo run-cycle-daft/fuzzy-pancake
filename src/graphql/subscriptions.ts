@@ -11,6 +11,16 @@ export const onMutateMessage = /* GraphQL */ `
       eventId
       createdAt
       updatedAt
+      original {
+        bucket
+        key
+        region
+      }
+      thumbnail {
+        bucket
+        key
+        region
+      }
       _version
       _deleted
       _lastChangedAt
@@ -40,6 +50,16 @@ export const onCreateMessage = /* GraphQL */ `
       eventId
       createdAt
       updatedAt
+      original {
+        bucket
+        key
+        region
+      }
+      thumbnail {
+        bucket
+        key
+        region
+      }
       _version
       _deleted
       _lastChangedAt
@@ -69,6 +89,16 @@ export const onUpdateMessage = /* GraphQL */ `
       eventId
       createdAt
       updatedAt
+      original {
+        bucket
+        key
+        region
+      }
+      thumbnail {
+        bucket
+        key
+        region
+      }
       _version
       _deleted
       _lastChangedAt
@@ -98,6 +128,16 @@ export const onDeleteMessage = /* GraphQL */ `
       eventId
       createdAt
       updatedAt
+      original {
+        bucket
+        key
+        region
+      }
+      thumbnail {
+        bucket
+        key
+        region
+      }
       _version
       _deleted
       _lastChangedAt

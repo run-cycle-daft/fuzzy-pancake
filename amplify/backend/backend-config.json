@@ -39,6 +39,21 @@
     "raceresults": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "chatImages": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger1f348b63",
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ]
+        }
+      ]
     }
   },
   "function": {
@@ -71,6 +86,33 @@
           ]
         }
       ]
+    },
+    "S3Trigger1f348b63": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true,
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "graphqlrealtimeracesharpLib",
+          "attributes": [
+            "Arn"
+          ]
+        },
+        {
+          "category": "api",
+          "resourceName": "graphqlrealtimerace",
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ]
+        }
+      ]
+    },
+    "graphqlrealtimeracesharpLib": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
     }
   }
 }

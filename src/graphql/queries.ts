@@ -37,8 +37,15 @@ export const getResults = /* GraphQL */ `
         url
       }
       FastestLap {
+        AverageSpeed {
+          speed
+          units
+        }
         lap
         rank
+        Time {
+          time
+        }
       }
       driverId
       grid
@@ -74,8 +81,15 @@ export const getResults2 = /* GraphQL */ `
         url
       }
       FastestLap {
+        AverageSpeed {
+          speed
+          units
+        }
         lap
         rank
+        Time {
+          time
+        }
       }
       driverId
       grid
@@ -100,6 +114,16 @@ export const getMessage = /* GraphQL */ `
       eventId
       createdAt
       updatedAt
+      original {
+        bucket
+        key
+        region
+      }
+      thumbnail {
+        bucket
+        key
+        region
+      }
       _version
       _deleted
       _lastChangedAt
@@ -134,9 +158,33 @@ export const listMessages = /* GraphQL */ `
         eventId
         createdAt
         updatedAt
+        original {
+          bucket
+          key
+          region
+        }
+        thumbnail {
+          bucket
+          key
+          region
+        }
         _version
         _deleted
         _lastChangedAt
+        event {
+          id
+          title
+          date
+          description
+          heart
+          thumbsup
+          happy
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
       }
       nextToken
       startedAt
@@ -167,9 +215,33 @@ export const messagesByEventId = /* GraphQL */ `
         eventId
         createdAt
         updatedAt
+        original {
+          bucket
+          key
+          region
+        }
+        thumbnail {
+          bucket
+          key
+          region
+        }
         _version
         _deleted
         _lastChangedAt
+        event {
+          id
+          title
+          date
+          description
+          heart
+          thumbsup
+          happy
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
       }
       nextToken
       startedAt
@@ -196,9 +268,33 @@ export const syncMessages = /* GraphQL */ `
         eventId
         createdAt
         updatedAt
+        original {
+          bucket
+          key
+          region
+        }
+        thumbnail {
+          bucket
+          key
+          region
+        }
         _version
         _deleted
         _lastChangedAt
+        event {
+          id
+          title
+          date
+          description
+          heart
+          thumbsup
+          happy
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
       }
       nextToken
       startedAt
@@ -247,6 +343,20 @@ export const listStarredEvents = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
+        Event {
+          id
+          title
+          date
+          description
+          heart
+          thumbsup
+          happy
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
       }
       nextToken
       startedAt
@@ -274,6 +384,20 @@ export const syncStarredEvents = /* GraphQL */ `
         _lastChangedAt
         createdAt
         updatedAt
+        Event {
+          id
+          title
+          date
+          description
+          heart
+          thumbsup
+          happy
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
       }
       nextToken
       startedAt

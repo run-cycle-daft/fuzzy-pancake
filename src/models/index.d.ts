@@ -72,6 +72,13 @@ export declare class LapTime {
   constructor(init: ModelInit<LapTime>);
 }
 
+export declare class S3Object {
+  readonly bucket: string;
+  readonly key: string;
+  readonly region: string;
+  constructor(init: ModelInit<S3Object>);
+}
+
 export declare class Message {
   readonly id: string;
   readonly owner?: string;
@@ -80,6 +87,8 @@ export declare class Message {
   readonly eventId?: string;
   readonly createdAt: string;
   readonly updatedAt: string;
+  readonly original?: S3Object;
+  readonly thumbnail?: S3Object;
   constructor(init: ModelInit<Message>);
   static copyOf(source: Message, mutator: (draft: MutableModel<Message>) => MutableModel<Message> | void): Message;
 }

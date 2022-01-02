@@ -9,6 +9,7 @@ type Message
     rules: [
       { allow: owner }
       { allow: private, operations: [read] }
+      { allow: private, provider: iam, operations: [update] }
     ]
   ) {
   id: ID!
@@ -18,6 +19,14 @@ type Message
   eventId: ID
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
+  original: S3Object
+  thumbnail: S3Object
+}
+
+type S3Object {
+  bucket: String!
+  key: String!
+  region: String!
 }
 
 type Subscription {
