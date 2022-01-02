@@ -95,3 +95,17 @@ export declare class Event {
   constructor(init: ModelInit<Event>);
   static copyOf(source: Event, mutator: (draft: MutableModel<Event>) => MutableModel<Event> | void): Event;
 }
+
+export declare class LocationEvent {
+  readonly id: string;
+  readonly type?: string;
+  readonly geofenceId?: string;
+  readonly deviceId?: string;
+  readonly sampleTime?: string;
+  readonly longitude?: number;
+  readonly latitude?: number;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<LocationEvent>);
+  static copyOf(source: LocationEvent, mutator: (draft: MutableModel<LocationEvent>) => MutableModel<LocationEvent> | void): LocationEvent;
+}

@@ -25,3 +25,55 @@ Add AWS SDK location service client
 ```bash
 yarn add @aws-sdk/client-location
 ```
+
+Update amplify/backend/api/schema.graphql
+```graphql
+type LocationEvent
+  @model
+  @auth(
+    rules: [
+      { allow: private, provider: iam, operations: [read, create] }
+      { allow: private }
+    ]
+  ) {
+  id: ID!
+  type: String
+  geofenceId: String
+  deviceId: String
+  sampleTime: String
+  longitude: Float
+  latitude: Float
+}
+```
+
+Add new Amplify Lambda function
+
+```bash
+amplify add function
+```
+> Lambda function
+> updateLocation
+> NodeJS
+> Hello World
+> Yes
+> Yes
+> api
+> Query, Mutation
+> No
+> No
+> No
+
+Then update amplify/backend/function/updateLocation/src/index.js with new content
+
+And push to Cloud
+```bash
+amplify push --yes
+```
+
+After adding the new target to the EventBridge update the dependencies & code
+```bash
+yarn add react-use
+yarn add -D @types/zen-observable
+```
+
+Finally add futher updates to the src/pages/Map.tsx
