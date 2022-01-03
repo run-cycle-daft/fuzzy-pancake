@@ -76,11 +76,11 @@ yarn add react-use
 yarn add -D @types/zen-observable
 ```
 
-Finally add futher updates to the src/pages/Map.tsx
+Finally, add further updates to the src/pages/Map.tsx
 
 ## Lab5 notes
 
-After manually adding custom AWS resources to add to the Amplify current env `staging` run followiing
+After manually adding custom AWS resources to add to the `Amplify` current env `staging` run following
 
 ```bash
 amplify env checkout staging
@@ -90,4 +90,4 @@ amplify push --yes
 
 Status checks local state for Amplify
 
-Finally Push will deploy the resources
+Finally, Push will deploy the resources
