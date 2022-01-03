@@ -183,5 +183,21 @@
       "service": "Kinesis",
       "providerPlugin": "awscloudformation"
     }
+  },
+  "stepFunction": {
+    "processWorkflow": {
+      "service": "Step Function",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "simulateRaceEvents",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    }
   }
 }
