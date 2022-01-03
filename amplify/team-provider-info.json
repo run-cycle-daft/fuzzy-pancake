@@ -49,6 +49,10 @@
         "simulateRaceEvents": {
           "deploymentBucketName": "amplify-graphqlrealtimerace-staging-211824-deployment",
           "s3Key": "amplify-builds/simulateRaceEvents-6d54647648434348686b-build.zip"
+        },
+        "raceSimulationScheduler": {
+          "deploymentBucketName": "amplify-graphqlrealtimerace-staging-211824-deployment",
+          "s3Key": "amplify-builds/raceSimulationScheduler-6253576e374649426e37-build.zip"
         }
       }
     }
