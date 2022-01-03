@@ -158,6 +158,20 @@
           ]
         }
       ]
+    },
+    "simulateRaceEvents": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "analytics",
+          "resourceName": "graphqlrealtimeraceKinesis",
+          "attributes": [
+            "kinesisStreamArn"
+          ]
+        }
+      ]
     }
   },
   "analytics": {
