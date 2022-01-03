@@ -78,5 +78,5 @@ yarn add -D @types/zen-observable
 
 Finally add futher updates to the src/pages/Map.tsx
 
-## Lab4 notes
+## Lab5 notes
 

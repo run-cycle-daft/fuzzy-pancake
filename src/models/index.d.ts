@@ -107,6 +107,25 @@ export declare class Event {
   static copyOf(source: Event, mutator: (draft: MutableModel<Event>) => MutableModel<Event> | void): Event;
 }
 
+export declare class RaceEvent {
+  readonly id: string;
+  readonly event?: Event;
+  readonly eventId?: string;
+  readonly type?: string;
+  readonly competitor?: string;
+  readonly lap?: number;
+  readonly time?: string;
+  readonly position?: number;
+  readonly speed?: number;
+  readonly gear?: number;
+  readonly longitude?: number;
+  readonly latitude?: number;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+  constructor(init: ModelInit<RaceEvent>);
+  static copyOf(source: RaceEvent, mutator: (draft: MutableModel<RaceEvent>) => MutableModel<RaceEvent> | void): RaceEvent;
+}
+
 export declare class StarredEvent {
   readonly id: string;
   readonly owner?: string;

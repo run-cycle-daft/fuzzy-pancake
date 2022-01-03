@@ -556,3 +556,187 @@ export const syncLocationEvents = /* GraphQL */ `
     }
   }
 `;
+export const getRaceEvent = /* GraphQL */ `
+  query GetRaceEvent($id: ID!) {
+    getRaceEvent(id: $id) {
+      id
+      eventId
+      type
+      competitor
+      lap
+      time
+      position
+      speed
+      gear
+      longitude
+      latitude
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      event {
+        id
+        title
+        date
+        description
+        heart
+        thumbsup
+        happy
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const listRaceEvents = /* GraphQL */ `
+  query ListRaceEvents(
+    $filter: ModelRaceEventFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRaceEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        eventId
+        type
+        competitor
+        lap
+        time
+        position
+        speed
+        gear
+        longitude
+        latitude
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        event {
+          id
+          title
+          date
+          description
+          heart
+          thumbsup
+          happy
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const raceEventsByEventId = /* GraphQL */ `
+  query RaceEventsByEventId(
+    $eventId: ID
+    $createdAt: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelRaceEventFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    raceEventsByEventId(
+      eventId: $eventId
+      createdAt: $createdAt
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        eventId
+        type
+        competitor
+        lap
+        time
+        position
+        speed
+        gear
+        longitude
+        latitude
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        event {
+          id
+          title
+          date
+          description
+          heart
+          thumbsup
+          happy
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncRaceEvents = /* GraphQL */ `
+  query SyncRaceEvents(
+    $filter: ModelRaceEventFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncRaceEvents(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        eventId
+        type
+        competitor
+        lap
+        time
+        position
+        speed
+        gear
+        longitude
+        latitude
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        event {
+          id
+          title
+          date
+          description
+          heart
+          thumbsup
+          happy
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;

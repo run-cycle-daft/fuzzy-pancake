@@ -136,11 +136,37 @@
           ]
         }
       ]
+    },
+    "processLiveEvents": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "analytics",
+          "resourceName": "graphqlrealtimeraceKinesis",
+          "attributes": [
+            "kinesisStreamArn"
+          ]
+        },
+        {
+          "category": "api",
+          "resourceName": "graphqlrealtimerace",
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ]
+        }
+      ]
     }
   },
   "analytics": {
     "graphqlrealtimerace": {
       "service": "Pinpoint",
+      "providerPlugin": "awscloudformation"
+    },
+    "graphqlrealtimeraceKinesis": {
+      "service": "Kinesis",
       "providerPlugin": "awscloudformation"
     }
   }

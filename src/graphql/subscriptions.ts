@@ -41,6 +41,42 @@ export const onMutateMessage = /* GraphQL */ `
     }
   }
 `;
+export const onReceiveRaceEvent = /* GraphQL */ `
+  subscription OnReceiveRaceEvent($eventId: ID) {
+    onReceiveRaceEvent(eventId: $eventId) {
+      id
+      eventId
+      type
+      competitor
+      lap
+      time
+      position
+      speed
+      gear
+      longitude
+      latitude
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      event {
+        id
+        title
+        date
+        description
+        heart
+        thumbsup
+        happy
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
 export const onCreateMessage = /* GraphQL */ `
   subscription OnCreateMessage {
     onCreateMessage {
@@ -344,6 +380,114 @@ export const onDeleteLocationEvent = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+    }
+  }
+`;
+export const onCreateRaceEvent = /* GraphQL */ `
+  subscription OnCreateRaceEvent {
+    onCreateRaceEvent {
+      id
+      eventId
+      type
+      competitor
+      lap
+      time
+      position
+      speed
+      gear
+      longitude
+      latitude
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      event {
+        id
+        title
+        date
+        description
+        heart
+        thumbsup
+        happy
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const onUpdateRaceEvent = /* GraphQL */ `
+  subscription OnUpdateRaceEvent {
+    onUpdateRaceEvent {
+      id
+      eventId
+      type
+      competitor
+      lap
+      time
+      position
+      speed
+      gear
+      longitude
+      latitude
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      event {
+        id
+        title
+        date
+        description
+        heart
+        thumbsup
+        happy
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const onDeleteRaceEvent = /* GraphQL */ `
+  subscription OnDeleteRaceEvent {
+    onDeleteRaceEvent {
+      id
+      eventId
+      type
+      competitor
+      lap
+      time
+      position
+      speed
+      gear
+      longitude
+      latitude
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      event {
+        id
+        title
+        date
+        description
+        heart
+        thumbsup
+        happy
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
     }
   }
 `;

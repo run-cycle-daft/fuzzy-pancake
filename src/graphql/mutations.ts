@@ -344,3 +344,120 @@ export const deleteLocationEvent = /* GraphQL */ `
     }
   }
 `;
+export const createRaceEvent = /* GraphQL */ `
+  mutation CreateRaceEvent(
+    $input: CreateRaceEventInput!
+    $condition: ModelRaceEventConditionInput
+  ) {
+    createRaceEvent(input: $input, condition: $condition) {
+      id
+      eventId
+      type
+      competitor
+      lap
+      time
+      position
+      speed
+      gear
+      longitude
+      latitude
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      event {
+        id
+        title
+        date
+        description
+        heart
+        thumbsup
+        happy
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const updateRaceEvent = /* GraphQL */ `
+  mutation UpdateRaceEvent(
+    $input: UpdateRaceEventInput!
+    $condition: ModelRaceEventConditionInput
+  ) {
+    updateRaceEvent(input: $input, condition: $condition) {
+      id
+      eventId
+      type
+      competitor
+      lap
+      time
+      position
+      speed
+      gear
+      longitude
+      latitude
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      event {
+        id
+        title
+        date
+        description
+        heart
+        thumbsup
+        happy
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const deleteRaceEvent = /* GraphQL */ `
+  mutation DeleteRaceEvent(
+    $input: DeleteRaceEventInput!
+    $condition: ModelRaceEventConditionInput
+  ) {
+    deleteRaceEvent(input: $input, condition: $condition) {
+      id
+      eventId
+      type
+      competitor
+      lap
+      time
+      position
+      speed
+      gear
+      longitude
+      latitude
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      event {
+        id
+        title
+        date
+        description
+        heart
+        thumbsup
+        happy
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
